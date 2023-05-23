@@ -2,10 +2,9 @@ from dotenv import load_dotenv
 import os
 import discord
 
-from app.open_chat.connect_openai import chatgpt_response
+from app.open_chat.connect_openai import chatgpt_response,real_chat
 load_dotenv()
 discord_token = os.getenv('DISCORD_TOKEN')
-print(discord.__version__)
 #
 # class inet(discord.Intents):
 #     intents = discord.Intents.default()
@@ -37,7 +36,7 @@ class MyClient(discord.Client):
         print(message.content)
         if (message.author  == self.user):
             return
-        await message.channel.send(f'ChatGPT: {chatgpt_response(message.content)}')
+        await message.channel.send(f'ChatGPT: {real_chat(message.content)}')
 
 intents = discord.Intents.default()
 
